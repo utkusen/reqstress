@@ -20,6 +20,7 @@ var average_time time.Duration
 var numOfSuccess int
 var numOfFail int
 var numOfnon200 int
+var urlStr string
 
 func sendRequest(wg *sync.WaitGroup, req *fasthttp.Request, resp *fasthttp.Response, client *fasthttp.Client) {
 	defer wg.Done()
@@ -47,6 +48,7 @@ func main() {
 	requestFile := flag.String("r", "", "Path of request file")
 	numWorker := flag.Int("w", 500, "Number of worker. Default: 500")
 	duration := flag.Int("d", 0, "Test duration. Default: infinite")
+	protocol := flag.String("p", "https", "Protol to attack. http or https.")
 	flag.Parse()
 	if *requestFile == "" {
 		fmt.Println("Please specify all arguments!")
@@ -63,7 +65,12 @@ func main() {
 		panic(err)
 	}
 	var wg sync.WaitGroup
-	urlStr := "http://" + httpRequest.Host + httpRequest.RequestURI
+	if *protocol == "http" {
+		urlStr = "http://" + httpRequest.Host + httpRequest.RequestURI
+	} else {
+		urlStr = "https://" + httpRequest.Host + httpRequest.RequestURI
+	}
+
 	bodyBytes, _ := ioutil.ReadAll(httpRequest.Body)
 	bodyString := string(bodyBytes)
 	req := fasthttp.AcquireRequest()

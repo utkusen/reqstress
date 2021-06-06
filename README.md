@@ -42,7 +42,7 @@ You can download the pre-built binaries from the [releases](https://github.com/u
 
 # Usage
 
-reqstress requires 3 parameters to run: 
+reqstress requires 4 parameters to run: 
 
 `-r` : Path of the request file. For example: `-r request.txt`. Request file should contain a raw HTTP request. For example:
 
@@ -69,3 +69,5 @@ log=admin&pwd=asdadsasdads
 `-w` : The number of workers to run. The default value is 500. You can increase or decrease this by testing out the capability of your system.
 
 `-d` : Duration of the test (in seconds). Default is infinite.
+
+`-p` : Protocol to attack. Can be http or https. Default is https.
