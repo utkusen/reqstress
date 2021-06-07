@@ -29,7 +29,7 @@ reqstresser is not the fastest benchmarking tool, but it's not bad either. I tes
 
 You can download the pre-built binaries from the [releases](https://github.com/utkusen/reqstress/releases) page and run. For example:
 
-`wget https://github.com/utkusen/reqstress/releases/download/v0.1.1/reqstress_0.1.1_Linux_amd64.tar.gz`
+`wget https://github.com/utkusen/reqstress/releases/download/v0.1.3/reqstress_0.1.3_Linux_amd64.tar.gz`
 
 `tar xzvf reqstress_0.1.1_Linux_amd64.tar.gz`
 
