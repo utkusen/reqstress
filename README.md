@@ -42,7 +42,7 @@ You can download the pre-built binaries from the [releases](https://github.com/u
 
 # Usage
 
-reqstress requires 4 parameters to run: 
+reqstress requires 6 parameters to run: 
 
 `-r` : Path of the request file. For example: `-r request.txt`. Request file should contain a raw HTTP request. For example:
 
@@ -70,4 +70,6 @@ log=admin&pwd=asdadsasdads
 
 `-d` : Duration of the test (in seconds). Default is infinite.
 
-`-p` : Protocol to attack. Can be http or https. Default is https.
+`-https` : Target protocol. Can be `true` or `false`. Default is `true`
+
+`-t` : Request timeout. Default is 5(seconds)
