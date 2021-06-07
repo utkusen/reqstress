@@ -10,7 +10,7 @@ So, you can copy your favorite request from Burp Suite, Fiddler etc. and pass it
 
 ## reqstress vs. Other Tools
 
-reqstresser is not the fastest benchmarking tool, but it's not bad either. I tested couple of popular tools on a $20 Linode server. Here is the result:
+reqstresser is not the fastest benchmarking tool, but it's not bad either. I tested couple of popular tools on a $20 Linode server with same amount of threads. Here is the result:
 
 
 | Tool         | Num. of Sent Requests | Duration |
