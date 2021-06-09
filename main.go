@@ -12,15 +12,16 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/valyala/fasthttp"
 )
 
 var averageTime time.Duration
-var numOfSuccess int
-var numOfFail int
-var numOfnon200 int
+var numOfSuccess int32
+var numOfFail int32
+var numOfnon200 int32
 var mtx sync.Mutex
 var urlStr string
 
@@ -31,24 +32,17 @@ func sendRequest(client *fasthttp.Client, req *fasthttp.Request, wg *sync.WaitGr
 		timeStart := time.Now()
 		err := client.DoTimeout(req, resp, time.Duration(timeout)*time.Second)
 		if err != nil {
-			go safeInc(&numOfFail)
+			atomic.AddInt32(&numOfFail, 1)
 			continue
 		}
 
 		go setAvarageTime(averageTime + time.Since(timeStart))
 		if resp.StatusCode() == fasthttp.StatusOK {
-			go safeInc(&numOfSuccess)
+			atomic.AddInt32(&numOfSuccess, 1)
 		} else {
-			go safeInc(&numOfnon200)
+			atomic.AddInt32(&numOfnon200, 1)
 		}
 	}
-}
-
-// safeInc safely incerements the given integer for aoiding race conditions
-func safeInc(num *int) {
-	mtx.Lock()
-	*num++
-	mtx.Unlock()
 }
 
 func setAvarageTime(newTime time.Duration) {
