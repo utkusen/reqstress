@@ -72,4 +72,4 @@ log=admin&pwd=asdadsasdads
 
 `-https` : Target protocol. Can be `true` or `false` (e.g `-https=false`). Default is `true`
 
-`-t` : Request timeout. Default is 5(seconds) (e.g `-t 1`)
+`-t` : Request timeout. (e.g `-t 1`). Default is 5(seconds) 
