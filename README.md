@@ -66,10 +66,10 @@ log=admin&pwd=asdadsasdads
 
 ```
 
-`-w` : The number of workers to run. The default value is 500. You can increase or decrease this by testing out the capability of your system.
+`-w` : The number of workers to run (e.g `-w 750`). The default value is 500. You can increase or decrease this by testing out the capability of your system.
 
-`-d` : Duration of the test (in seconds). Default is infinite.
+`-d` : Duration of the test (in seconds) (e.g `-d 60`). Default is infinite.
 
-`-https` : Target protocol. Can be `true` or `false`. Default is `true`
+`-https` : Target protocol. Can be `true` or `false` (e.g `-https=false`). Default is `true`
 
-`-t` : Request timeout. Default is 5(seconds)
+`-t` : Request timeout. Default is 5(seconds) (e.g `-t 1`)
